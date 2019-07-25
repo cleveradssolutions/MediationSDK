@@ -49,10 +49,10 @@
 ## Functions
 ### Banner
 ```csharp
-ShowSmallBanner()
+PSV.AdsManager.ShowSmallBanner()
 /// Show in a certain place
-ShowSmallBanner(ad_pos = AdPosition.Top_Centered) 
-HideSmallBanner()
+PSV.AdsManager.ShowSmallBanner(ad_pos = AdPosition.Top_Centered) 
+PSV.AdsManager.HideSmallBanner()
 ``` 
 Позиция по умолчанию - **Undefined**<br/>
 Возможные позиции баннера:
@@ -65,42 +65,42 @@ HideSmallBanner()
 
 ### Interstitial
 ```csharp
-ShowInterstitial()
+PSV.AdsManager.ShowInterstitial()
 /// Full-screen banner cached and ready to show.
-IsInterstitialReady()
+PSV.AdsManager.IsInterstitialReady()
 /// The time delay after the last interstitial was passed.
-IsInterDelayPassed()
+PSV.AdsManager.IsInterDelayPassed()
 /// Start delay between shown interstitial with the current time.
-ResetLastInterstitialTime()
+PSV.AdsManager.ResetLastInterstitialTime()
 /// Is displayed right now full screen banner interstitial.
-IsDisplayedInterstitial()
+PSV.AdsManager.IsDisplayedInterstitial()
 ```
 
 _События:_ 
 ```csharp
-⚡️ OnInterstitialClosed
-⚡️ OnInterstitialShown
+⚡️ PSV.AdsManager.OnInterstitialClosed
+⚡️ PSV.AdsManager.OnInterstitialShown
 ```
 
 ### Rewarded Video
 ```csharp
-TryShowRewardedVideoAd()
+PSV.AdsManager.TryShowRewardedVideoAd()
 /// Rewarded video ad cached and ready to show.
-IsRewardedReady()
+PSV.AdsManager.IsRewardedReady()
 /// The time delay after the last rewarded video ad was passed.
-IsRewardedDelayPassed()
+PSV.AdsManager.IsRewardedDelayPassed()
 /// Start delay between shown rewarded with the current time.
-ResetLastRewardedTime()
+PSV.AdsManager.ResetLastRewardedTime()
 /// Is displayed right now rewarded ad video.
-IsDisplayedRewardedVideo()
+PSV.AdsManager.IsDisplayedRewardedVideo()
 /// Show Rewarded. If Rewarded Video Ad can't be shown then show Interstitial Ad.
 /// Method is ignored delay between shown Rewarded and Interstitial ad.
-ShowRewardedElseInterAd()
+PSV.AdsManager.ShowRewardedElseInterAd()
 ```
 _События:_
 
 ```csharp
-⚡️ OnRewardedClosed
-⚡️ OnRewardedComplete
-⚡️ OnRewardedShown
+⚡️ PSV.AdsManager.OnRewardedClosed
+⚡️ PSV.AdsManager.OnRewardedComplete
+⚡️ PSV.AdsManager.OnRewardedShown
 ```
