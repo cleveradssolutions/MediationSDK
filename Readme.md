@@ -1,4 +1,4 @@
-# PSV Mediation Library
+# CleverAdsSolutions
 ## Описание 📖
 **Mediation Library содержит:**
 * SDK рекламных площадок:
@@ -19,7 +19,7 @@
 ## Installation ⚙️
 ### 1. Скачать unitypackage.
 Пакет содержит все необходимые модули для работы медиации. <br>
-### 2. Установщик PSV Installer.
+### 2. Установщик SDK Installer.
 После импорта пакета автоматически запуститься установщик. <br>
 
 ![ads_android_setting](http://drive.google.com/uc?export=view&id=14EE42oMzu4gUNqp0k5ozqvh8KJO-NZkQ)
@@ -32,7 +32,6 @@
 1. Clean Assets (Require)
 
 ### 3. Настройка.
-~~После регистрации приложения на сайте на почту будет отправлен файл с конфигурацией (confing.json) в течении 24 часов.~~ <br>
 Для просмотра настроек нужно перейти в Window -> PSV Ads Settings -> Android / IOs
 
 ![ads_android_setting](http://drive.google.com/uc?export=view&id=1dCyMybCKjIBRBpYpQKivhCkqQqQzqW0C)
