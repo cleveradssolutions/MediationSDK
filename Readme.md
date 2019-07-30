@@ -24,6 +24,10 @@
 
 ![ads_android_setting](http://drive.google.com/uc?export=view&id=14EE42oMzu4gUNqp0k5ozqvh8KJO-NZkQ)
 
+В случае если установка не запустилась автоматически либо была прервана установку можно продолжить запустив принудительно.
+
+![image](https://drive.google.com/uc?export=view&id=14DCo0I8rFFJgesQ0fAZPFcbR6INchVOV)
+
 Процесс установки:
 
 1. Install DLL Basement for Unity 2017 or 2018+ (Require)
