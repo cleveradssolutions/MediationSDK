@@ -46,6 +46,18 @@
 | Set Dummy| Создает конфигурацию для теста|
 | Layers identified | Вкл/Откл типы рекламных обьявлений |
 
+В разделе Build Settings необходимо выставить Build System -> Gradle.
+ 
+![image](https://drive.google.com/uc?export=view&id=1BxWC8Ic3gvUxK5NeN16Ifwuu5dsmlvOA)
+
+В разделе Publishing Settings необходимо выставить Custom Gradle Template. Так же рекомендуется отметить User Proguard File, но не обязательно.
+
+![image](https://drive.google.com/uc?export=view&id=1TiqVJbkK9u06uTmAtWNOrFkX45um2-OD)
+
+После этого библиотеки в папки Plugins/Android будут заменены на конфиг mainTemplate. 
+
+![image](https://drive.google.com/uc?export=view&id=1pmKf2gZ_iPDgxgEvgBnegFcUkivxp0jw)
+ 
 ### Все готово.
 Теперь Вы можете использовать медиацию у себя в проекте 😊
 
