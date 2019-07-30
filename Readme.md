@@ -45,6 +45,7 @@
 | Update | Выгружает конфигурацию с сервера|
 | Set Dummy| Создает конфигурацию для теста|
 | Layers identified | Вкл/Откл типы рекламных обьявлений |
+| Interstital delay | Задержка между возможным показом interstital (сек) |
 
 В разделе Build Settings необходимо выставить Build System -> Gradle.
  
