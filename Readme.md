@@ -14,8 +14,10 @@
 
 ## Supported Unity
 *  Минимальная версия Unity 2017.4  
-*  Рекомендуемая версия 2018.4+  
 *  Android MinSdkVersion 16  
+*  Gradle 3.2.0  
+*  useAndroidX = true  
+*  enableJetifier = true  
 
 ## Installation ⚙️
 ### 1. Скачать unitypackage.
