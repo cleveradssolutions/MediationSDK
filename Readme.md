@@ -146,3 +146,13 @@ Events:_
 ⚡️ PSV.AdsManager.OnRewardedComplete
 ⚡️ PSV.AdsManager.OnRewardedShown
 ```
+
+## Support
+Technical support:
+Max
+Skype: m@x.ua
+
+Network support:
+Vitaly
+Skype: zanzavital
+mailto:support@cleveradssolutions.com
