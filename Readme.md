@@ -63,6 +63,8 @@ For settings editing go to Window -> PSV Ads Settings -> Android / IOs
 | Layers identified | On/Off ads types |
 | Interstital delay | Delay between interstitial can be shown (sec) |
 
+<b>If you want to use debug configuration select Set Dummy otherwise for final release app must be connected to ads networks. Please contact us using skype or email below and send us bundle ID. Then you'll able select Update in PSV ADS Settings and refresh final configuration.</b>   
+
 In section <b>Build Settings</b> set <b>Build System -> Gradle</b>.
  
 ![image](https://drive.google.com/uc?export=view&id=1BxWC8Ic3gvUxK5NeN16Ifwuu5dsmlvOA)
