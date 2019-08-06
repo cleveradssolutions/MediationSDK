@@ -92,8 +92,8 @@ PSV.AdsManager.ShowSmallBanner()
 PSV.AdsManager.ShowSmallBanner(ad_pos = AdPosition.Top_Centered) 
 PSV.AdsManager.HideSmallBanner()
 ``` 
-Позиция по умолчанию - **Undefined**<br/>
-Возможные позиции баннера:
+Position by default - **Undefined**<br/>
+Possible banner positions:
 
 | |AdPosition| |
 | --- | --- | --- |
@@ -114,7 +114,7 @@ PSV.AdsManager.ResetLastInterstitialTime()
 PSV.AdsManager.IsDisplayedInterstitial()
 ```
 
-_События:_ 
+Events:_ 
 ```csharp
 ⚡️ PSV.AdsManager.OnInterstitialClosed
 ⚡️ PSV.AdsManager.OnInterstitialShown
@@ -135,7 +135,7 @@ PSV.AdsManager.IsDisplayedRewardedVideo()
 /// Method is ignored delay between shown Rewarded and Interstitial ad.
 PSV.AdsManager.ShowRewardedElseInterAd()
 ```
-_События:_
+Events:_
 
 ```csharp
 ⚡️ PSV.AdsManager.OnRewardedClosed
