@@ -41,7 +41,7 @@ Installation process:
 1. Clean Assets (Require)
 
 <b>Important!</b>
-For successful work gradle 3.2.0 required! If you using Unity 2018.3 and less you should check you gradle version. Go to
+For successful work <b>gradle</b> 3.2.0 required! If you using Unity 2018.3 and less you should check you gradle version. Go to
 
 <b>"*Unity Folder*\Editor\Data\PlaybackEngines\AndroidPlayer\Tools\GradleTemplates"</b> 
 
