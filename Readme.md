@@ -75,6 +75,10 @@ After that config <b>mainTemplate</b> will be added to <b>Plugins/Android</b>.
 
 ![image](https://drive.google.com/uc?export=view&id=1pmKf2gZ_iPDgxgEvgBnegFcUkivxp0jw)
  
+ In section Android Resolver Settings enable <b>Patch mainTemplate.gradle</b> and Use <b>Jetifier</b>.
+ 
+ ![image](https://drive.google.com/uc?export=view&id=1pXrwhX2cgB0mHU_h5fTgYL7E2hondAQ8)
+ 
 ### Done
 Now you can use mediation in your project. 😊
 
