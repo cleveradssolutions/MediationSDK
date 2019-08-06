@@ -1,6 +1,6 @@
-## Описание 📖
-**Mediation Library содержит:**
-* SDK рекламных площадок:
+## Description 📖
+**Mediation Library contains:**
+* Ads SDK:
 1. AppLovin
 1. Chartbooks
 1. InMobiAds
@@ -13,33 +13,36 @@
 1. Facebook Audience
 
 ## Supported Unity
-*  Минимальная версия Unity 2017.4  
+*  Min version Unity 2017.4 (gradle update reqired)
+*  Recomended Unity 2018.4+
 *  Android MinSdkVersion 16  
 *  Gradle 3.2.0  
 *  useAndroidX = true  
 *  enableJetifier = true  
 
 ## Installation ⚙️
-### 1. Скачать unitypackage.
+### 1. Download unitypackage.
 [В разделе Release](https://github.com/cleveradssolutions/MediationSDK/releases/latest)  
-Пакет содержит все необходимые модули для работы медиации. <br>
-### 2. Установщик SDK Installer.
-После импорта пакета автоматически запуститься установщик. <br>
+Package contains all required modules for mediation. <br>
+### 2. SDK Installer.
+After import installer will be lauched automaticaly. <br>
 
 ![ads_android_setting](http://drive.google.com/uc?export=view&id=14EE42oMzu4gUNqp0k5ozqvh8KJO-NZkQ)
 
-В случае если установка не запустилась автоматически либо была прервана установку можно продолжить запустив принудительно.
+There must be no compillation errors for success automatic installation launcher. Otherwise you can lauch installer manually or manually import all requireв packages from Assets/PSV/MediationInstaller.
 
 ![image](https://drive.google.com/uc?export=view&id=14DCo0I8rFFJgesQ0fAZPFcbR6INchVOV)
 
-Процесс установки:
+Installation process:
 
 1. Install DLL Basement for Unity 2017 or 2018+ (Require)
 1. Install main Mediation SDK of networks (Require)
 1. Install Play Service Resolver (Require)
 1. Clean Assets (Require)
 
-### 3. Настройка.
+<b>Important!<\b>
+
+### 3. Setup.
 Для просмотра настроек нужно перейти в Window -> PSV Ads Settings -> Android / IOs
 
 ![ads_android_setting](http://drive.google.com/uc?export=view&id=1dCyMybCKjIBRBpYpQKivhCkqQqQzqW0C)
