@@ -40,7 +40,7 @@ Installation process:
 1. Install Play Service Resolver (Require)
 1. Clean Assets (Require)
 
-<b>Important!<\b>
+<b>Important!<b>
 
 ### 3. Setup.
 Для просмотра настроек нужно перейти в Window -> PSV Ads Settings -> Android / IOs
