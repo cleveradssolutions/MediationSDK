@@ -41,7 +41,7 @@ Installation process:
 1. Clean Assets (Require)
 
 <b>Important!</b>
-For successful work gradle 3.2.0 required! If you using Unity 2018.3 and less you should check you gradle version. Go to <b>"*Unity Folder*\Editor\Data\PlaybackEngines\AndroidPlayer\Tools\GradleTemplates"<b> in file  mainTemplate.gradle  you will find line with version  "classpath 'com.android.tools.build:gradle:3.2.0'" . If your gradle version less than 3.2.0 you'l have to update gradle manually or use newer Unity version.
+For successful work gradle 3.2.0 required! If you using Unity 2018.3 and less you should check you gradle version. Go to <b>"*Unity Folder*\Editor\Data\PlaybackEngines\AndroidPlayer\Tools\GradleTemplates"</b> in file  <b>mainTemplate.gradle</b>  you will find line with version  <b>"classpath 'com.android.tools.build:gradle:3.2.0'"</b> . If your gradle version less than 3.2.0 you'l have to update gradle manually or use newer Unity version.
  
 ### 3. Setup.
 Для просмотра настроек нужно перейти в Window -> PSV Ads Settings -> Android / IOs
