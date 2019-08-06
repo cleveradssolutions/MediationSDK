@@ -148,11 +148,11 @@ Events:_
 ```
 
 ## Support
-Technical support:
-Max
-Skype: m@x.ua
+Technical support: <br>
+Max<br>
+Skype: m@x.ua <br>
 
-Network support:
-Vitaly
-Skype: zanzavital
-mailto:support@cleveradssolutions.com
+Network support: <br>
+Vitaly<br>
+Skype: zanzavital <br>
+mailto:support@cleveradssolutions.com <br>
