@@ -22,7 +22,7 @@
 
 ## Installation ⚙️
 ### 1. Download unitypackage.
-[В разделе Release](https://github.com/cleveradssolutions/MediationSDK/releases/latest)  
+[In section Release](https://github.com/cleveradssolutions/MediationSDK/releases/latest)  
 Package contains all required modules for mediation. <br>
 ### 2. SDK Installer.
 After import installer will be lauched automaticaly. <br>
@@ -52,22 +52,22 @@ in file  <b>mainTemplate.gradle</b>  you will find line with version
 If your gradle version less than 3.2.0 you'l have to update gradle manually or use newer Unity version.
  
 ### 3. Setup.
-Для просмотра настроек нужно перейти в Window -> PSV Ads Settings -> Android / IOs
+For settings editing go to Window -> PSV Ads Settings -> Android / IOs
 
 ![ads_android_setting](http://drive.google.com/uc?export=view&id=1dCyMybCKjIBRBpYpQKivhCkqQqQzqW0C)
 
 |Action|Description|
 | --- | --- |
-| Update | Выгружает конфигурацию с сервера|
-| Set Dummy| Создает конфигурацию для теста|
-| Layers identified | Вкл/Откл типы рекламных обьявлений |
-| Interstital delay | Задержка между возможным показом interstital (сек) |
+| Update | Download config from server|
+| Set Dummy| Create testing configuration|
+| Layers identified | On/Off ads types |
+| Interstital delay | Delay between interstitial can be shown (sec) |
 
-В разделе Build Settings необходимо выставить Build System -> Gradle.
+In section <b>Build Settings</b> set <b>Build System -> Gradle</b>.
  
 ![image](https://drive.google.com/uc?export=view&id=1BxWC8Ic3gvUxK5NeN16Ifwuu5dsmlvOA)
 
-В разделе Publishing Settings необходимо выставить Custom Gradle Template. 
+In section <b>Publishing Settings</b> set <b>Custom Gradle Template</b>. 
 
 ![image](https://drive.google.com/uc?export=view&id=1TiqVJbkK9u06uTmAtWNOrFkX45um2-OD)
 
