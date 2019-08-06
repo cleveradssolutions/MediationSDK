@@ -80,8 +80,9 @@ Now you can use mediation in your project. 😊
 
 For testing you can add scene <b>PSVMediationTest</b> from <b>Assets/PSV/MediationTest</b> to Scenes in Build and check state of all networks. 
 
-There you will see different states for all ads types. If you'll see "Error | No Fill" 
-
+There you will see different states for all ads types. If you'll see "Error | No Fill, Error | Request timeout" - this is normal situation means in present time there is no ad from concrete network. Please wait a little bit state will be updated.
+ 
+![image](https://drive.google.com/uc?export=view&id=1tGYqyJgCgg65hfbXDeHyHM743tIw7vP0)
 
 ## Functions
 ### Banner
