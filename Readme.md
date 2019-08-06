@@ -71,12 +71,16 @@ In section <b>Publishing Settings</b> set <b>Custom Gradle Template</b>.
 
 ![image](https://drive.google.com/uc?export=view&id=1TiqVJbkK9u06uTmAtWNOrFkX45um2-OD)
 
-После этого библиотеки в папки Plugins/Android будут заменены на конфиг mainTemplate. 
+After that config <b>mainTemplate</b> will be added to <b>Plugins/Android</b>.
 
 ![image](https://drive.google.com/uc?export=view&id=1pmKf2gZ_iPDgxgEvgBnegFcUkivxp0jw)
  
-### Все готово.
-Теперь Вы можете использовать медиацию у себя в проекте 😊
+### Done
+Now you can use mediation in your project. 😊
+
+For testing you can add scene <b>PSVMediationTest</b> from <b>Assets/PSV/MediationTest</b> to Scenes in Build and check state of all networks. 
+
+There you will see different states for all ads types. If you'll see "Error | No Fill" 
 
 
 ## Functions
