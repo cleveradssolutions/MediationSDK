@@ -29,7 +29,7 @@ After import installer will be lauched automaticaly. <br>
 
 ![ads_android_setting](http://drive.google.com/uc?export=view&id=14EE42oMzu4gUNqp0k5ozqvh8KJO-NZkQ)
 
-There must be no compillation errors for success automatic installation launcher. Otherwise you can lauch installer manually or manually import all requireв packages from Assets/PSV/MediationInstaller.
+There must be no compillation errors for success automatic installation launcher. Otherwise you can lauch installer manually or manually import all required packages from Assets/PSV/MediationInstaller.
 
 ![image](https://drive.google.com/uc?export=view&id=14DCo0I8rFFJgesQ0fAZPFcbR6INchVOV)
 
@@ -41,7 +41,7 @@ Installation process:
 1. Clean Assets (Require)
 
 <b>Important!</b>
-For successful work <b>gradle</b> 3.2.0 required! If you using Unity 2018.3 and less you should check you gradle version. Go to
+For successful work min <b>gradle</b> 3.2.0 required! If you using Unity 2018.3 and less you should check you gradle version. Go to
 
 <b>"*Unity Folder*\Editor\Data\PlaybackEngines\AndroidPlayer\Tools\GradleTemplates"</b> 
 
