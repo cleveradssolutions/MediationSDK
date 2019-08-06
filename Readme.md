@@ -55,7 +55,7 @@
  
 ![image](https://drive.google.com/uc?export=view&id=1BxWC8Ic3gvUxK5NeN16Ifwuu5dsmlvOA)
 
-В разделе Publishing Settings необходимо выставить Custom Gradle Template. Так же рекомендуется отметить User Proguard File, но не обязательно.
+В разделе Publishing Settings необходимо выставить Custom Gradle Template. 
 
 ![image](https://drive.google.com/uc?export=view&id=1TiqVJbkK9u06uTmAtWNOrFkX45um2-OD)
 
