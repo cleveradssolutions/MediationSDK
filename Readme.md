@@ -63,7 +63,7 @@ For settings editing go to Window -> PSV Ads Settings -> Android / IOs
 | Layers identified | On/Off ads types |
 | Interstital delay | Delay between interstitial can be shown (sec) |
 
-If you want to use debug configuration select <b>Set Dummy</b> otherwise <b>for final release app must be connected to ads networks. Please contact us using skype or email below and send us bundle ID.</b> Then you'll able select Update in PSV ADS Settings and refresh final configuration. 
+If you want to use debug configuration select <b>Set Dummy</b> otherwise <b>for final release app must be connected to ads networks. Please [CONTACT](https://github.com/cleveradssolutions/MediationSDK/blob/master/Readme.md#support) us using skype or email below and send us bundle ID.</b> Then you'll able select Update in PSV ADS Settings and refresh final configuration. 
 
 In section <b>Build Settings</b> set <b>Build System -> Gradle</b>.
  
