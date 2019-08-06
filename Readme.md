@@ -150,7 +150,7 @@ Events:_
 ## Support
 Technical support: <br>
 Max<br>
-Skype: m@x.ua <br>
+Skype: m.shevchenko@psvgamestudio.com <br>
 
 Network support: <br>
 Vitaly<br>
