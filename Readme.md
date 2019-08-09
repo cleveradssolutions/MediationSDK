@@ -152,7 +152,7 @@ Events:_
 ## Support
 Technical support: <br>
 Max<br>
-Skype: live:m.shevchenko_15 <br>
+Skype: m.shevchenko_15 <br>
 
 Network support: <br>
 Vitaly<br>
