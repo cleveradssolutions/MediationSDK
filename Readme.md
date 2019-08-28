@@ -1,22 +1,24 @@
 ## Description 📖
-**Mediation Library contains:**
-* Ads SDK:
-1. AppLovin
-1. Chartbooks
-1. InMobiAds
-1. KIDOZ
-1. UnityAds
-1. Vungle
-1. AdColony
-1. Startapp
-1. SuperAwesome
-1. Facebook Audience
+### Main mediation SDK:
+* [AppLovin](https://www.applovin.com)
+* [Chartboost](https://www.chartboost.com)
+* [KIDOZ](https://kidoz.net)
+* [UnityAds](https://unity.com/solutions/unity-ads)
+* [Vungle](https://vungle.com)
+* [AdColony](https://www.adcolony.com)
+* [StartApp](https://www.startapp.com)
+* [SuperAwesome](https://www.superawesome.com)
+
+### Mediation Not Childish applications:
+* [Facebook Audience](https://www.facebook.com/business/marketing/audience-network)
+* [InMobi](https://www.inmobi.com)
+* [MyTarget](https://target.my.com)
 
 ## Supported Unity
 *  Min version Unity 2017.4 (gradle update reqired)
 *  Recomended Unity 2018.4+
 *  Android MinSdkVersion 16  
-*  Gradle 3.2.0  
+*  Gradle 3.2.0+  
 *  useAndroidX = true  
 *  enableJetifier = true  
 
