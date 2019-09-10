@@ -12,12 +12,11 @@
 
 ### Mediation Not Childish applications:
 * [Facebook Audience](https://www.facebook.com/business/marketing/audience-network)
-* [InMobi](https://www.inmobi.com)
+* [Yandex Ad](https://yandex.ru/dev/mobile-ads)
 * [MyTarget](https://target.my.com)
 
 ## Supported Unity
-*  Min version Unity 2017.4 (gradle update reqired)
-*  Recomended Unity 2018.4+
+*  Min version Unity 2017.4
 *  Android MinSdkVersion 16  
 *  Gradle 3.2.0+  
 *  useAndroidX = true  
@@ -40,11 +39,11 @@ Installation process:
 
 1. Install DLL Basement for Unity 2017 or 2018+ (Require)
 1. Install main Mediation SDK of networks (Require)
-1. Install Play Service Resolver (Require)
 1. Clean Assets (Require)
 
 <b>Important!</b>
-For successful work min <b>gradle</b> 3.2.0 required! If you using Unity 2018.3 and less you should check you gradle version. Go to
+For successful work min <b>gradle</b> 3.2.0 required!  
+If you using Unity 2018.3 and less you should check you gradle version. Go to
 
 <b>"*Unity Folder*\Editor\Data\PlaybackEngines\AndroidPlayer\Tools\GradleTemplates"</b> 
 
@@ -66,11 +65,8 @@ For settings editing go to Window -> PSV Ads Settings -> Android / IOs
 | Layers identified | On/Off ads types |
 | Interstital delay | Delay between interstitial can be shown (sec) |
 
-If you want to use debug configuration select <b>Set Dummy</b> otherwise <b>for final release app must be connected to ads networks. Please [CONTACT](https://github.com/cleveradssolutions/MediationSDK/blob/master/Readme.md#support) us using skype or email below and send us bundle ID and Google Play app link (if app already released).</b> Then you'll able select Update in PSV ADS Settings and refresh final configuration. 
-
-In section <b>Build Settings</b> set <b>Build System -> Gradle</b>.
- 
-![image](https://drive.google.com/uc?export=view&id=1BxWC8Ic3gvUxK5NeN16Ifwuu5dsmlvOA)
+If you want to use debug configuration select <b>Set Dummy</b> otherwise <b>for final release app must be connected to ads networks.  
+Please [CONTACT](https://github.com/cleveradssolutions/MediationSDK/blob/master/Readme.md#support) us using skype or email below and send us Google Play app link.</b> Then you'll able select Update in PSV ADS Settings and refresh final configuration. 
 
 In section <b>Publishing Settings</b> set <b>Custom Gradle Template</b>. 
 
