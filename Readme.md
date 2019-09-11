@@ -104,7 +104,6 @@ Possible banner positions:
 | |AdPosition| |
 | --- | --- | --- |
 | Top_Left | Top_Centered | Top_Right |
-| Middle_Left| Middle_Centered| Middle_Right|
 | Bottom_Right| Bottom_Center| Bottom_Right|
 
 ### Interstitial
