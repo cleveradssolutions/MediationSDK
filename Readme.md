@@ -95,7 +95,18 @@ There you will see different states for all ads types. If you'll see "Error | No
 ```csharp
 /// Show certain Ad type
 ///"type" - Small, Interstitial, Rewarded, Native.
+///"network" - show Ad by certain network. Null - use all networks
 PSV.AdsManager.Show(AdType type, string network = null)
+
+///Enable or disable Ads
+PSV.AdsManager.SetAdsEnabled(bool param)
+///Enable or disable Ads by certain type
+PSV.AdsManager.SetAdsEnabled(AdType type, bool param)
+
+///Check is ads enabled by certain type
+bool PSV.AdsManager.IsAdsEnabled(AdType type)
+
+
 
 PSV.AdsManager.ShowSmallBanner()
 /// Show in a certain place
