@@ -93,6 +93,10 @@ There you will see different states for all ads types. If you'll see "Error | No
 ## Functions
 ### Banner
 ```csharp
+/// Show certain Ad type
+///"type" - Small, Interstitial, Rewarded, Native.
+PSV.AdsManager.Show(AdType type, string network = null)
+
 PSV.AdsManager.ShowSmallBanner()
 /// Show in a certain place
 PSV.AdsManager.ShowSmallBanner(ad_pos = AdPosition.Top_Centered) 
