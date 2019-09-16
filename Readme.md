@@ -91,28 +91,94 @@ There you will see different states for all ads types. If you'll see "Error | No
 ![image](https://drive.google.com/uc?export=view&id=1tGYqyJgCgg65hfbXDeHyHM743tIw7vP0)
 
 ## Functions
-### Banner
+### AdsSettings
 ```csharp
-/// Show certain Ad type
-///"type" - Small, Interstitial, Rewarded, Native.
-///"network" - show Ad by certain network. Null - use all networks
-PSV.AdsManager.Show(AdType type, string network = null)
+/// Get Demo Id for Android or IOs platform 
+string PSV.AdsSettings.GetDemoAdmobAppId(RuntimePlatform platform)
 
-///Enable or disable Ads
+///Get Platform simple string name
+string PSV.AdsSettings.GetPlatformName(RuntimePlatform platform)
+
+///Init networks types
+PSV.AdsSettings.FindNetworkTypes(MediationInfo[] filter, Func<IAdProvider>[] result, bool[] singleton)
+
+///Init networks types
+PSV.AdsSettings.FindNetworkTypes(Assembly assembly, MediationInfo[] filter, Func<IAdProvider>[] result, bool[] singleton)
+
+///Init networks types
+PSV.AdsSettings.FindNetworkTypes(out List<AdsProviderNetAttribute> attributes, out List<Type> types)
+
+///Init networks types
+PSV.AdsSettings.FindNetworkTypes(Assembly assembly, out List<AdsProviderNetAttribute> attributes, out List<Type> types)
+
+///Init load AdsSettingsData
+PSV.AdsSettings.Load(Action<AdsSettingsData> complete)
+
+///Init load AdsSettingsData from json cache
+PSV.AdsSettings.LoadFromChache(string local_path, AdsSettingsData result, Action<AdsSettingsData> complete)
+
+///Get request Ad url
+PSV.AdsSettings.GetRemoteUrl(string location, RuntimePlatform platform)
+
+///Save current params to json
+PSV.AdsSettings.SaveRemoteToCache(string json_data)
+
+``` 
+### AdsManager
+```csharp
+/// Enable or disable Ads
 PSV.AdsManager.SetAdsEnabled(bool param)
+
 ///Enable or disable Ads by certain type
 PSV.AdsManager.SetAdsEnabled(AdType type, bool param)
 
-///Check is ads enabled by certain type
-bool PSV.AdsManager.IsAdsEnabled(AdType type)
+///Check is Ads enabled
+PSV.AdsManager.IsAdsEnabled()
 
+///Check is Ads enabled by certain type
+PSV.AdsManager.IsAdsEnabled(AdType type)
 
+/// Set GDPR Consent SDK Implementation for ads in session.
+PSV.AdsManager.SetConsent(bool consent)
 
-PSV.AdsManager.ShowSmallBanner()
-/// Show in a certain place
-PSV.AdsManager.ShowSmallBanner(ad_pos = AdPosition.Top_Centered) 
-PSV.AdsManager.HideSmallBanner()
+///Set dubug mode. Better for debug recomended set dummy in settings.
+PSV.AdsManager.SetDebugMode(bool debug)
+
+///Check is Ad by certain type is ready
+ bool PSV.AdsManager.IsAdReady(AdType type)
 ``` 
+
+### Banner
+```csharp
+///Get small banner lifecycle
+SmallBannerAdLifecycle smallBannerLifecycle
+
+///Show small banner
+PSV.AdsManager.ShowSmallBanner(AdPosition ad_pos = AdPosition.Undefined)
+
+/// Check is banner visible now
+bool PSV.AdsManager.GetBannerVisible()
+
+///Get current banner size
+AdSize PSV.AdsManager.GetAdSize()
+
+/// Get current banner size in pixels
+Vector2 PSV.AdsManager.GetBannerSizeInPX()
+
+///Get current banner position
+AdPosition PSV.AdsManager.GetAdPos()
+
+///Hide small banner
+PSV.AdsManager.HideSmallBanner()
+
+///Refresh small banner
+PSV.AdsManager.RefreshSmallBannerForCurrentScene()
+
+///Refresh banner with new params
+PSV.AdsManager.RefreshSmallBanner(AdPosition ad_pos, AdSize ad_size)
+
+``` 
+ 
 Position by default - **Undefined**<br/>
 Possible banner positions:
 
@@ -123,15 +189,33 @@ Possible banner positions:
 
 ### Interstitial
 ```csharp
+///Show Interstitial Ads banner.
 PSV.AdsManager.ShowInterstitial()
+
+///Show Interstitial Ads banner.
+/// Return value indicates whether show the ads succeeded.
+bool PSV.AdsManager.ShowInterstitial(bool ignore_delay = false)
+
 /// Full-screen banner cached and ready to show.
-PSV.AdsManager.IsInterstitialReady()
-/// The time delay after the last interstitial was passed.
-PSV.AdsManager.IsInterDelayPassed()
-/// Start delay between shown interstitial with the current time.
+bool PSV.AdsManager.IsInterstitialReady()
+
+///The time delay after the last interstitial was passed.
+bool PSV.AdsManager.IsInterDelayPassed()
+
+///Waiting time after the last show until the next interstitial show
+float PSV.AdsManager.GetInterDelayLeft()
+
+///Is displayed right now full screen banner interstitial.
+bool PSV.AdsManager.IsDisplayedInterstitial()
+
+///Start delay between shown interstitial with the current time
 PSV.AdsManager.ResetLastInterstitialTime()
-/// Is displayed right now full screen banner interstitial.
-PSV.AdsManager.IsDisplayedInterstitial()
+
+///Set interval between possible interstitial call
+PSV.AdsManager.SetInterstitialInterval(float seconds)
+
+///Set delay between shown interstitial done
+SetInterDelayDone()
 ```
 
 Events:_ 
@@ -142,18 +226,38 @@ Events:_
 
 ### Rewarded Video
 ```csharp
-PSV.AdsManager.TryShowRewardedVideoAd()
 /// Rewarded video ad cached and ready to show.
-PSV.AdsManager.IsRewardedReady()
+bool PSV.AdsManager.IsRewardedReady()
+
 /// The time delay after the last rewarded video ad was passed.
-PSV.AdsManager.IsRewardedDelayPassed()
-/// Start delay between shown rewarded with the current time.
+bool PSV.AdsManager.IsRewardedDelayPassed()
+
+/// Waiting time after the last show until the next video show
+float PSV.AdsManager.GetRewardedDelayLeft()
+
+/// Start delay between shown rewarded with the current time
 PSV.AdsManager.ResetLastRewardedTime()
+
+///Set delay between shown rewarded video ad done
+PSV.AdsManager.SetRewardedDelayDone()
+
+/// Show rewarded video ad.
+/// Before calling this method, subscribe to events like "OnRewardedComplete" 
+/// After done or close rewarded, unsubscripted from events.
+bool PSV.AdsManager.ShowRewardedVideoAd(bool ignore_delay = false)
+
+/// Show rewarded video ad. 
+/// One-time use actions without needed to unsubscripted.
+/// Return value indicates whether show the video succeeded.
+bool PSV.AdsManager.TryShowRewardedVideoAd(Action successful, Action fail, bool successOnAdDisabled = false, bool ignore_delay = false)
+
 /// Is displayed right now rewarded ad video.
 PSV.AdsManager.IsDisplayedRewardedVideo()
+
 /// Show Rewarded. If Rewarded Video Ad can't be shown then show Interstitial Ad.
 /// Method is ignored delay between shown Rewarded and Interstitial ad.
-PSV.AdsManager.ShowRewardedElseInterAd()
+bool PSV.AdsManager.ShowRewardedElseInterAd(Action successful, Action fail, bool successOnAdDisabled = true)
+
 ```
 Events:_
 
