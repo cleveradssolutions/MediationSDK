@@ -93,35 +93,91 @@ There you will see different states for all ads types. If you'll see "Error | No
 ## Functions
 ### AdsSettings
 ```csharp
-/// Get Demo Id for Android or IOs platform 
-string PSV.AdsSettings.GetDemoAdmobAppId(RuntimePlatform platform)
+///Is enabled forces sdk to filter ads with violence, drugs, etc
+PSV.AdsSettings.IsTaggedForChildren()
 
-///Get Platform simple string name
-string PSV.AdsSettings.GetPlatformName(RuntimePlatform platform)
+/// Set forces sdk to filter ads with violence, drugs, etc
+PSV.AdsSettings.SetTaggedForChildren(bool forChildren)
 
-///Init networks types
-PSV.AdsSettings.FindNetworkTypes(MediationInfo[] filter, Func<IAdProvider>[] result, bool[] singleton)
+/// Is enabled forces SDK to request on family ads (poor fill rate).
+/// Not recomended for used, low fill rate.
+PSV.AdsSettings.IsDesignedForFamilies()
 
-///Init networks types
-PSV.AdsSettings.FindNetworkTypes(Assembly assembly, MediationInfo[] filter, Func<IAdProvider>[] result, bool[] singleton)
+/// Set enabled forces SDK to request on family ads (poor fill rate).
+/// Not recomended for used, low fill rate.
+PSV.AdsSettings.SetDesignedForFamilies(bool forFamilies)
 
-///Init networks types
-PSV.AdsSettings.FindNetworkTypes(out List<AdsProviderNetAttribute> attributes, out List<Type> types)
+///Get Content Rating 
+PSV.AdsSettings.GetContentRating()
 
-///Init networks types
-PSV.AdsSettings.FindNetworkTypes(Assembly assembly, out List<AdsProviderNetAttribute> attributes, out List<Type> types)
+/// Setting a maximum ad content rating
+/// Some types of ads may be more suitable for your app’s audience than others.
+/// Showing users ads that are a better fit can improve their overall ad experience and help maximize your app’s revenue.
+/// That rating will override any rating set in the AdMob user interface. 
+PSV.AdsSettings.SetContentRating(ContentRating rating)
 
-///Init load AdsSettingsData
-PSV.AdsSettings.Load(Action<AdsSettingsData> complete)
+/// Subscribe listener on content filters changed.
+PSV.AdsSettings.AddFiltersListener(IListener listener)
 
-///Init load AdsSettingsData from json cache
-PSV.AdsSettings.LoadFromChache(string local_path, AdsSettingsData result, Action<AdsSettingsData> complete)
+/// Unsubscribe listener on content filters changed.
+PSV.AdsSettings.RemoveFiltersListener(IListener listener)
 
-///Get request Ad url
-PSV.AdsSettings.GetRemoteUrl(string location, RuntimePlatform platform)
+/// Set GDPR user Consent SDK Implementation for ads on session.
+PSV.AdsSettings.SetConsent(bool consent)
 
-///Save current params to json
-PSV.AdsSettings.SaveRemoteToCache(string json_data)
+/// Is wait SetConsent(bool)  call to begin initialize ADS.
+/// Return true only before initialize ads.
+PSV.AdsSettings.SetConsent(bool consent)
+
+/// Get current state of GDPR user Consent SDK Implementation for ads on session.
+PSV.AdsSettings.GetConsent()
+
+/// Set debug log mode for native mediation SDK
+PSV.AdsSettings.SetNativeDebug(bool debug)
+
+/// Is debug log mode enabled for native mediation SDK
+bool PSV.AdsSettings.IsNativeDebugEnabled()
+
+/// Set muted sounds in ads
+PSV.AdsSettings.SetMutedAdSounds(bool muted)
+
+/// Is sounds muted in ads
+bool PSV.AdsSettings.SetMutedAdSounds(bool muted)
+
+/// Delay between "AdType.Interstitial" impressions
+/// and after application launch
+PSV.AdsSettings.SetInterstitialInterval(float seconds)
+
+/// Get delay between  "AdType.Interstitial"  impressions
+/// and after application launch
+float PSV.AdsSettings.GetInterstitialInterval()
+
+/// Delay between  AdType.Rewarded impressions
+/// and after application launch
+PSV.AdsSettings.SetRewardedVideoInterval(float seconds)
+
+/// Get delay between  "AdType.Rewarded"  impressions
+/// and after application launch
+float PSV.AdsSettings.GetRewardedVideoInterval()
+
+/// Subscribe listener on options changed.
+PSV.AdsSettings.AddOptionsListener(IOptionsListener listener)
+
+/// Unsubscribe listener on options changed.
+PSV.AdsSettings.RemoveOptionsListener(IOptionsListener listener)
+
+/// Get Remote value by "remote_key_interstitial_delay" 
+PSV.AdsSettings.RemoveOptionsListener(IOptionsListener listener)
+
+/// Get Remote value by "remote_key_rewarded_delay" 
+float PSV.AdsSettings.RemoveOptionsListener(IOptionsListener listener)
+
+/// Get Remote value by key for selected "AdType" 
+bool PSV.AdsSettings.IsAdTypeEnabled(AdType type, bool defaultValue)
+
+/// Get Remote value by "remote_key_collect_response_info" 
+bool PSV.AdsSettings.IsCollectResponseInfo()
+
 
 ``` 
 ### AdsManager
