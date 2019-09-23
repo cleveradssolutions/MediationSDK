@@ -182,26 +182,46 @@ bool PSV.AdsSettings.IsCollectResponseInfo()
 ``` 
 ### AdsManager
 ```csharp
-/// Enable or disable Ads
+/// Set available ad types to processing of "AdTypeFlags.Everything"
+/// This method will be leave <see cref="AdType.Rewarded"/> on set false argument.
+/// The state will be saved between sessions.
+/// Recommended use "EnableAdTypes(AdTypeFlags)"
+/// OR "DisableAdTypes(AdTypeFlags)" instead to check the selected type.
 PSV.AdsManager.SetAdsEnabled(bool param)
+ 
+/// Check available any ad types.
+/// Recommended use <see cref="IsAdsEnabled(AdTypeFlags)"/> instead to check the selected type.
+/// OR "IsAdsProcessing(AdType)" to validate currently processing and caching of ad type.
+bool PSV.AdsManager.IsAdsEnabled()
+ 
+/// Check available selected ad types.
+/// To find out currently enabled processing and caching of ad type use <see cref="IsAdsProcessing(AdType)"/>
+bool PSV.AdsManager.IsAdsEnabled(AdTypeFlags types)
 
-///Enable or disable Ads by certain type
-PSV.AdsManager.SetAdsEnabled(AdType type, bool param)
+/// Check currently processing and caching of selected ad type.
+bool PSV.AdsManager.IsAdsProcessing(AdType type)
 
-///Check is Ads enabled
-PSV.AdsManager.IsAdsEnabled()
+/// Set available ad types to processing of selected types.
+/// The state will be saved between sessions.
+/// For set available of all types use <see cref="AdTypeFlags.Everything"/>
+PSV.AdsManager.EnableAdTypes(AdTypeFlags types)
 
-///Check is Ads enabled by certain type
-PSV.AdsManager.IsAdsEnabled(AdType type)
+/// Set NOT available ad types to processing of selected types.
+/// The state will be saved between sessions.
+/// For set NOT available of all types use <see cref="AdTypeFlags.Everything"/>
+PSV.AdsManager.DisableAdTypes(AdTypeFlags types)
 
-/// Set GDPR Consent SDK Implementation for ads in session.
-PSV.AdsManager.SetConsent(bool consent)
+/// Force show ad by selected type and network. 
+/// Ignored delay between displayed ad.
+bool PSV.AdsManager.Show(AdType type, string network = null)
 
-///Set dubug mode. Better for debug recomended set dummy in settings.
-PSV.AdsManager.SetDebugMode(bool debug)
+/// Check ready
+bool PSV.AdsManager.IsAdReady(AdType type)
 
-///Check is Ad by certain type is ready
- bool PSV.AdsManager.IsAdReady(AdType type)
+/// Get last active mediation ad name of selected type.
+/// Can return "string.Empty".
+string PSV.AdsManager.GetInfoLastActiveAd(AdType type)
+
 ``` 
 
 ### Banner
