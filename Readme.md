@@ -71,9 +71,7 @@ For settings editing go to Window -> PSV Ads Settings -> Android / IOs
 If you want to use debug configuration select <b>Set Dummy</b> otherwise <b>for final release app must be connected to ads networks.  
 Please [CONTACT](https://github.com/cleveradssolutions/MediationSDK/blob/master/Readme.md#support) us using skype or email below and send us Google Play app link.</b> Then you'll able select Update in PSV ADS Settings and refresh final configuration. 
 
-In section <b>Publishing Settings</b> set <b>Custom Gradle Template</b>. 
-
-![image](https://drive.google.com/uc?export=view&id=1TiqVJbkK9u06uTmAtWNOrFkX45um2-OD)
+In section <b>Publishing Settings</b> set <b>Custom Gradle Template</b>.
 
 After that config <b>mainTemplate</b> will be added to <b>Plugins/Android</b>.
 
@@ -226,7 +224,7 @@ string PSV.AdsManager.GetInfoLastActiveAd(AdType type)
 
 ``` 
 
-### Banner
+#### Banner
 ```csharp
 ///Get small banner lifecycle
 SmallBannerAdLifecycle smallBannerLifecycle
@@ -265,7 +263,7 @@ Possible banner positions:
 | Top_Left | Top_Centered | Top_Right |
 | Bottom_Right| Bottom_Center| Bottom_Right|
 
-### Interstitial
+#### Interstitial
 ```csharp
 ///Show Interstitial Ads banner.
 PSV.AdsManager.ShowInterstitial()
@@ -302,7 +300,7 @@ Events:_
 ⚡️ PSV.AdsManager.OnInterstitialShown
 ```
 
-### Rewarded Video
+#### Rewarded Video
 ```csharp
 /// Rewarded video ad cached and ready to show.
 bool PSV.AdsManager.IsRewardedReady()
