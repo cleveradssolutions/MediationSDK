@@ -20,10 +20,15 @@
 *  Min version Unity 2017.4.24+
 *  Min version Unity 2018.4.0+
 *  Min version Unity 2019.1.0+
-*  Android MinSdkVersion 16  
+
+###  Android 
+*  MinSdkVersion 16  
 *  Gradle 3.2.0+  
 *  useAndroidX = true  
 *  enableJetifier = true  
+
+### IOS
+* Min OS 10.0
 
 ## Installation ⚙️
 ### 1. Download unitypackage.
