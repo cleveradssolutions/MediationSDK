@@ -16,10 +16,9 @@
 * [Yandex Ad](https://yandex.ru/dev/mobile-ads)
 * [MyTarget](https://target.my.com)
 
-## Supported Unity
-*  Min version Unity 2017.4.24+
-*  Min version Unity 2018.4.0+
-*  Min version Unity 2019.1.0+
+## Supported Unity versions
+*  Unity 2017.4.24+
+*  Unity 2018.4.X
 
 ###  Android 
 *  MinSdkVersion 16  
