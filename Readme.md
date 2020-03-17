@@ -1,358 +1,367 @@
-## Description 📖
-### Main mediation SDK:
-* [Admob](https://admob.google.com/home)
-* [AppLovin](https://www.applovin.com)
-* [Chartboost](https://www.chartboost.com)
-* [KIDOZ](https://kidoz.net)
-* [UnityAds](https://unity.com/solutions/unity-ads)
-* [Vungle](https://vungle.com)
-* [AdColony](https://www.adcolony.com)
-* [StartApp](https://www.startapp.com)
-* [SuperAwesome](https://www.superawesome.com)
-* [IronSource](https://www.ironsrc.com)
+# CleverAdsSolutions-Unity
 
-### Mediation Not Childish applications:
-* [Facebook Audience](https://www.facebook.com/business/marketing/audience-network)
-* [Yandex Ad](https://yandex.ru/dev/mobile-ads)
-* [MyTarget](https://target.my.com)
 
-## Supported Unity versions
-*  Unity 2017.4.24+
-*  Unity 2018.4.X
+## Before You Start  
+**Support Unity versions: Unity 2017.4.24+; Unity 2018.4.X; Unity 2019.2.X**  
+Please upgrade the intermediate versions to those that we support.  
 
-###  Android 
-*  MinSdkVersion 16  
-*  Gradle 3.2.0+  
-*  useAndroidX = true  
-*  enableJetifier = true  
+Support Android OS Version 4.2 (API level 17) and up.
+Support IOS Version 10.0 and up.
 
-### IOS
-* Min OS 10.0
+### AndroidX
+As of SDK 18.0.0, AdMob migrated from Android Support Libraries to Jetpack (AndroidX) Libraries. Refer to the [Google Play services release notes](https://developers.google.com/android/guides/releases#june_17_2019) for more information.  
 
-## Installation ⚙️
-### 1. Download unitypackage.
-[In section Release](https://github.com/cleveradssolutions/MediationSDK/releases/latest)  
-Package contains all required modules for mediation. <br>
-### 2. SDK Installer.
-After import installer will be lauched automaticaly. <br>
+Due to this, we working with the AdMob adapter it’s required that your project migrates from Android Support Libraries to Jetpack Libraries (Android X) if you are using any. Please refer to [Migrating to AndroidX](https://developer.android.com/jetpack/androidx/migrate) for more information. 
 
-![ads_android_setting](http://drive.google.com/uc?export=view&id=14EE42oMzu4gUNqp0k5ozqvh8KJO-NZkQ)
+In case you can not migrate the project using this tool, you can use the following flags in gradle.properties, to build your project using AndroidX. 
+*  android.useAndroidX = true  
+*  android.enableJetifier = true  
 
-There must be no compillation errors for success automatic installation launcher. Otherwise you can lauch installer manually or manually import all required packages from Assets/PSV/MediationInstaller.
 
-![image](https://drive.google.com/uc?export=view&id=14DCo0I8rFFJgesQ0fAZPFcbR6INchVOV)
+## SDK Integration
+[Download unitypackage from release page](https://github.com/cleveradssolutions/MediationSDK/releases/latest)   
+Package contains all required modules for mediation.   
+There must be no compillation errors for success automatic installation launcher.  
+After import installer will be lauched automaticaly.   
+Follow package installation instructions.  
 
-Installation process:
+Some Ad Networks target specific age ratings for your app’s content. Please select your content rating in application and follow the instructions.  
+*  G - 0+ years. General audiences. Content suitable for all audiences, including families and children.  
+*  PG - 7+ years. Parental guidance. Content suitable for most audiences with parental guidance, including topics like non-realistic, cartoonish violence.  
+*  T - 12+ years. Teen. Content suitable for teen and older audiences, including topics such as general health, social networks, scary imagery, and fight sports.  
+*  MA - 18+ years. Mature audiences. Content suitable only for mature audiences; includes topics such as alcohol, gambling, sexual content, and weapons.  
+**You can be punished if you don’t comply with the partner’s content rating restrictions!**
 
-1. Install DLL Basement for Unity 2017 or 2018+ (Require)
-1. Install main Mediation SDK of networks (Require)
-1. Clean Assets (Require)
+### Enable Gradle
+Go to Build Settings -> Player Settings -> Publishing Settings and check Custom Gradle Template  
+This will generate template gradle file inside Assets -> Plugins -> Android called mainTemplate.gradle  
+After that, all the necessary gradle settings will be determined automatically on Build. 
 
-<b>Important!</b>
-For successful work min <b>gradle</b> 3.2.0 required!  
-If you using Unity 2018.3 and less you should check you gradle version. Go to
+### Update AndroidManifest
+Add the following permissions to your [Plugins/Android/AndroidManifest.xml](Plugins/Android/AndroidManifest.xml ), file inside the manifest tag but outside the <application> tag:
+```xml
+<manifest>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+   
+    <!--Optional Permissions-->
+    
+    <!--This permission is used for certain ads that vibrate during play. 
+    This is a normal level permission, so this permission just needs to be defined in the manifest to enable this ad feature.-->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    
+    <!--This permission is used for certain ads that allow the user to save a screenshot to their phone. 
+    Note that with this permission on devices running Android 6.0 (API 23) or higher, 
+    this permission must be requested from the user. 
+    See Requesting Permissions for more details. https://developer.android.com/training/permissions/requesting -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    
+    <!--This permission is not a mandatory permission, however, including it will enable accurate ad targeting-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    ...
+</manifest>
+```
+If you do not find the manifest file [Plugins/Android/AndroidManifest.xml](Plugins/Android/AndroidManifest.xml ), you can take it from the example.  
 
-<b>"*Unity Folder*\Editor\Data\PlaybackEngines\AndroidPlayer\Tools\GradleTemplates"</b> 
+Some SDK may require a default permission, so please use the following lines to limit it.
+```xml
+<manifest>
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:node="remove"/>
+</manifest>
+```
 
-in file  <b>mainTemplate.gradle</b>  you will find line with version  
+#### Google Play Services in Your Android Manifest
+Add the following  inside the <application> tag in your AndroidManifest:
+```xml
+<manifest>
+    <application>
+      ...
+        <meta-data 
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+    </application>
+</manifest>
+```
 
-<b>"classpath 'com.android.tools.build:gradle:3.2.0'"</b> . 
+## For ProGuard Users Only
+If you are using ProGuard, you must add the following lines [Assets/Plugins/Android/proguard-user.txt](Assets/Plugins/Android/proguard-user.txt) to your ProGuard file.  
 
-If your gradle version less than 3.2.0 you'l have to update gradle manually or use newer Unity version.
+### Additional Settings for iOS
+In iOS9, Apple has added in controls around ‘ATS’. In order to ensure uninterrupted support for CAS Ad delivery across all Mediation Networks, it’s important to make the following changes in your info.plist:  
+*  Add in a dictionary called ‘NSAppTransportSecurity‘. Make sure you add this dictionary on the ‘Top Level Key‘.  
+*  Inside this dictionary, add a Boolean called ‘NSAllowsArbitraryLoads‘ and set it to YES.  
+
+ >Note: Make sure that your info.plist does not contain any other exceptions besides ‘NSAllowsArbitraryLoads‘, as this might create a conflict.   
  
-### 3. Setup.
-For settings editing go to Window -> PSV Ads Settings -> Android / IOs
+### ADS Settings
+For settings editing go to Window -> PSV Ads Settings -> Android / iOS
 
-![ads_android_setting](http://drive.google.com/uc?export=view&id=1dCyMybCKjIBRBpYpQKivhCkqQqQzqW0C)
-
-|Action|Description|
+| Option | Description |
 | --- | --- |
-| Update | Download config from server|
-| Set Dummy| Create testing configuration|
-| Layers identified | On/Off ads types |
+| Update | Download config from server |
+| Set Demo| Create testing configuration |
+| Layers identified | On/Off ads types. Disable not used types to increase system performance. |
+| Children tagged | Set forces sdk to filter ads with violence, drugs, etc. Can be changed by AdsSettings.SetTaggedForChildren. Enabled mode will reduces ad fill. |
+| GDPR compiliance | Start user consent mode. Can be changed by AdsSettings.SetConsent. |
+| Banner size | Start banner size |
 | Interstital delay | Delay between interstitial can be shown (sec) |
+| Refresh Banner | Refresh banner rate (sec) |
+| Loading Mode | CAS loading mode |
 
-If you want to use debug configuration select <b>Set Dummy</b> otherwise <b>for final release app must be connected to ads networks.  
-Please [CONTACT](https://github.com/cleveradssolutions/MediationSDK/blob/master/Readme.md#support) us using skype or email below and send us Google Play app link.</b> Then you'll able select Update in PSV ADS Settings and refresh final configuration. 
+If you want to use debug configuration select **Set Demo** otherwise for final release app must be connected to ads networks.    
+Please [CONTACT](#support) us using skype or email below and send us Google Play app link.</b> Then you'll able select Update in PSV ADS Settings and refresh final configuration. 
 
-In section <b>Publishing Settings</b> set <b>Custom Gradle Template</b>.
-
-After that config <b>mainTemplate</b> will be added to <b>Plugins/Android</b>.
-
-![image](https://drive.google.com/uc?export=view&id=1pmKf2gZ_iPDgxgEvgBnegFcUkivxp0jw)
+In section <b>Publishing Settings</b> set <b>Custom Gradle Template</b>.  
+After that config <b>mainTemplate</b> will be added to <b>Plugins/Android</b>.   
  
- In section Android Resolver Settings enable <b>Patch mainTemplate.gradle</b> and Use <b>Jetifier</b>.
- 
- ![image](https://drive.google.com/uc?export=view&id=1pXrwhX2cgB0mHU_h5fTgYL7E2hondAQ8)
- 
-### Done
-Now you can use mediation in your project. 😊
+ ## GDPR Managing Consent
+ CAS mediation platform supports publisher communication of a user’s consent choice to mediated networks.  
+ A detailed article on the use of user data can be found in the [Privacy Policy](https://github.com/cleveradssolutions/CAS-Android/wiki/Privacy-Policy).
 
-For testing you can add scene <b>PSVMediationTest</b> from <b>Assets/PSV/MediationTest</b> to Scenes in Build and check state of all networks. 
-
-There you will see different states for all ads types. If you'll see "Error | No Fill, Error | Request timeout" - this is normal situation means in present time there is no ad from concrete network. Please wait a little bit state will be updated.
+Recomended use mode: "Wait consent to 
+ To use CAS API to update a user’s consent status, use this functions:  
+ ```java
+ PSV.AdsSettings.SetConsent(true);
+ ```
+ If the user provided consent, please set the following flag to true:  
+ ```java
+ PSV.AdsSettings.SetConsent(false);
+ ```
  
-![image](https://drive.google.com/uc?export=view&id=1tGYqyJgCgg65hfbXDeHyHM743tIw7vP0)
+ **It’s recommended to set the API prior to SDK Initialization.**
+ 
+By default, the CAS SDK initializes app measurement with FALSE user consent and begin caching ads automatically.   
+However, if your app requires user consent before these events can be sent, you can delay app measurement until you explicitly PSV.AdsSettings.SetConsent.  
+To delay app measurement set "Wait consent to initialize" on  Window -> PSV Ads Settings -> Android / iOS GDPR compliance.
 
-## Functions
+## Implement our Ad Units
+CAS SDK is loading advertising content automatically after initialize.  
+Therefore, you need to wait until the advertisement is ready for display.  
+
+### Check Ad Availability
+```csharp
+bool ready = PSV.AdsManager.isAdReady(AdType.Interstitial); // Check any AdType
+```
+
+### Banner ad
+```csharp
+PSV.AdsManager.ShowSmallBanner(AdPosition.Bottom_Center);
+```
+For change the size or position the banner on screen use following code:
+```csharp
+PSV.AdsManager.RefreshSmallBanner(AdPosition.Bottom_Center, AdSize.Adaptive );
+// OR change AdSize only
+PSV.AdsManager.RefreshSmallBanner(AdPosition.Undefined, AdSize.Adaptive );
+// OR change position only
+PSV.AdsManager.RefreshSmallBanner(AdPosition.Bottom_Center, default(AdSize) );
+```
+For hide a banner from the screen using the following code:
+```csharp
+PSV.AdsManager.HideSmallBanner()
+```
+
+#### Adaptive Banner Size
+Adaptive banners are the next generation of responsive ads, maximizing performance by optimizing ad size for each device.  
+To pick the best ad size, adaptive banners use fixed aspect ratios instead of fixed heights. This results in banner ads that occupy a more consistent portion of the screen across devices and provide opportunities for improved performance. [You can read more in this article.](https://developers.google.com/admob/android/banner/adaptive)
+
+### Interstitial Ad
+Invoke the following method to show an Interstitial ad:  
+```csharp
+bool forceShow = false; // Set True for ignore timeout after previous show or initialize SDK.
+PSV.AdsManager.ShowInterstitial(forece);
+// OR
+PSV.AdsManager.Show(AdType.Interstitial);
+```
+You can subscribe to Interstitial global events that are invoked for each impression:  
+```csharp
+PSV.AdsManager.OnInterstitialShown += () => { Debug.Log("Interstitial are shown") };
+PSV.AdsManager.OnInterstitialClosed += () => { Debug.Log("Interstitial are closed") };
+```
+
+### Rewarded Video Ad
+Rewarded Video Ad has such global events that are invoked for each impression:
+```csharp
+PSV.AdsManager.OnRewardedShown += () => { Debug.Log("Rewarded Ad are shown") };
+PSV.AdsManager.OnRewardedClosed += () => { Debug.Log("Rewarded Ad are closed") };
+PSV.AdsManager.OnRewardedComplete += () => { Debug.Log("Congratulations, you watched the video to the end. Get reward.") };
+```
+Invoke the following method to show an Rewarded Ad:  
+```csharp
+PSV.AdsManager.ShowRewardedVideoAd();
+// OR
+PSV.AdsManager.Show(AdType.Rewarded);
+```
+Or you can use callbacks only for the current impression:
+```csharp
+Action successful = () => { Debug.Log("Congratulations, you watched the video to the end. Get reward.") };
+Action fail = () => { Debug.Log("Rewarded Ad are closed") };
+bool successOnAdDisabled = false; // Set True for invoke 'successful' callback on Rewarded Ad type disabled.
+
+PSV.AdsManager.TryShowRewardedVideoAd(successful, fail, successOnAdDisabled);
+```
+Sometimes there are situations when the rewarded video is not yet ready for display, but you need to show ads.  
+Then you can use a special method to show Interstitial Ad on Rewarded not ready.  
+Callbacks will be handled as if there was a successful ad serving.
+```csharp
+Action successful = () => { Debug.Log("Congratulations, you watched the video to the end. Get reward.") };
+Action fail = () => { Debug.Log("Rewarded or Interstitial Ad are closed") };
+bool successOnAdDisabled = false; // Set True for invoke 'successful' callback on Rewarded Ad type disabled.
+
+PSV.AdsManager.ShowRewardedElseInterAd(successful, fail, successOnAdDisabled)
+```
+
+## Source
 ### AdsSettings
 ```csharp
-///Is enabled forces sdk to filter ads with violence, drugs, etc
+// Is enabled forces sdk to filter ads with violence, drugs, etc
 PSV.AdsSettings.IsTaggedForChildren()
 
-/// Set forces sdk to filter ads with violence, drugs, etc
+// Set forces sdk to filter ads with violence, drugs, etc
 PSV.AdsSettings.SetTaggedForChildren(bool forChildren)
 
-/// Is enabled forces SDK to request on family ads (poor fill rate).
-/// Not recomended for used, low fill rate.
+// Is enabled forces SDK to request on family ads (poor fill rate).
+// Not recomended for used, low fill rate.
 PSV.AdsSettings.IsDesignedForFamilies()
 
-/// Set enabled forces SDK to request on family ads (poor fill rate).
-/// Not recomended for used, low fill rate.
+// Set enabled forces SDK to request on family ads (poor fill rate).
+// Not recomended for used, low fill rate.
 PSV.AdsSettings.SetDesignedForFamilies(bool forFamilies)
 
-///Get Content Rating 
+// Get Content Rating 
 PSV.AdsSettings.GetContentRating()
 
-/// Setting a maximum ad content rating
-/// Some types of ads may be more suitable for your app’s audience than others.
-/// Showing users ads that are a better fit can improve their overall ad experience and help maximize your app’s revenue.
-/// That rating will override any rating set in the AdMob user interface. 
+// Setting a maximum ad content rating
+// Some types of ads may be more suitable for your app’s audience than others.
+// Showing users ads that are a better fit can improve their overall ad experience and help maximize your app’s revenue.
+// That rating will override any rating set in the AdMob user interface. 
 PSV.AdsSettings.SetContentRating(ContentRating rating)
 
-/// Subscribe listener on content filters changed.
+// Subscribe listener on content filters changed.
 PSV.AdsSettings.AddFiltersListener(IListener listener)
 
-/// Unsubscribe listener on content filters changed.
+// Unsubscribe listener on content filters changed.
 PSV.AdsSettings.RemoveFiltersListener(IListener listener)
 
-/// Set GDPR user Consent SDK Implementation for ads on session.
+// Set GDPR user Consent SDK Implementation for ads on session.
 PSV.AdsSettings.SetConsent(bool consent)
 
-/// Is wait SetConsent(bool)  call to begin initialize ADS.
-/// Return true only before initialize ads.
+// Is wait SetConsent(bool)  call to begin initialize ADS.
+// Return true only before initialize ads.
 PSV.AdsSettings.SetConsent(bool consent)
 
-/// Get current state of GDPR user Consent SDK Implementation for ads on session.
+// Get current state of GDPR user Consent SDK Implementation for ads on session.
 PSV.AdsSettings.GetConsent()
 
-/// Set debug log mode for native mediation SDK
+// Set debug log mode for native mediation SDK
 PSV.AdsSettings.SetNativeDebug(bool debug)
 
-/// Is debug log mode enabled for native mediation SDK
+// Is debug log mode enabled for native mediation SDK
 bool PSV.AdsSettings.IsNativeDebugEnabled()
 
-/// Set muted sounds in ads
+// Set muted sounds in ads
 PSV.AdsSettings.SetMutedAdSounds(bool muted)
 
-/// Is sounds muted in ads
+// Is sounds muted in ads
 bool PSV.AdsSettings.SetMutedAdSounds(bool muted)
 
-/// Delay between "AdType.Interstitial" impressions
-/// and after application launch
+// Delay between "AdType.Interstitial" impressions and after application launch
 PSV.AdsSettings.SetInterstitialInterval(float seconds)
 
-/// Get delay between  "AdType.Interstitial"  impressions
-/// and after application launch
+// Get delay between  "AdType.Interstitial"  impressions and after application launch
 float PSV.AdsSettings.GetInterstitialInterval()
 
-/// Delay between  AdType.Rewarded impressions
-/// and after application launch
-PSV.AdsSettings.SetRewardedVideoInterval(float seconds)
-
-/// Get delay between  "AdType.Rewarded"  impressions
-/// and after application launch
-float PSV.AdsSettings.GetRewardedVideoInterval()
-
-/// Subscribe listener on options changed.
+// Subscribe listener on options changed.
 PSV.AdsSettings.AddOptionsListener(IOptionsListener listener)
 
-/// Unsubscribe listener on options changed.
+// Unsubscribe listener on options changed.
 PSV.AdsSettings.RemoveOptionsListener(IOptionsListener listener)
 
-/// Get Remote value by "remote_key_interstitial_delay" 
+// Get Remote value by "remote_key_interstitial_delay" 
 PSV.AdsSettings.RemoveOptionsListener(IOptionsListener listener)
 
-/// Get Remote value by "remote_key_rewarded_delay" 
+// Get Remote value by "remote_key_rewarded_delay" 
 float PSV.AdsSettings.RemoveOptionsListener(IOptionsListener listener)
 
-/// Get Remote value by key for selected "AdType" 
+// Get Remote value by key for selected "AdType" 
 bool PSV.AdsSettings.IsAdTypeEnabled(AdType type, bool defaultValue)
 
-/// Get Remote value by "remote_key_collect_response_info" 
+// Get Remote value by "remote_key_collect_response_info" 
 bool PSV.AdsSettings.IsCollectResponseInfo()
-
-
 ``` 
+
 ### AdsManager
 ```csharp
-/// Set available ad types to processing of "AdTypeFlags.Everything"
-/// This method will be leave <see cref="AdType.Rewarded"/> on set false argument.
-/// The state will be saved between sessions.
-/// Recommended use "EnableAdTypes(AdTypeFlags)"
-/// OR "DisableAdTypes(AdTypeFlags)" instead to check the selected type.
-PSV.AdsManager.SetAdsEnabled(bool param)
- 
-/// Check available any ad types.
-/// Recommended use <see cref="IsAdsEnabled(AdTypeFlags)"/> instead to check the selected type.
-/// OR "IsAdsProcessing(AdType)" to validate currently processing and caching of ad type.
-bool PSV.AdsManager.IsAdsEnabled()
- 
-/// Check available selected ad types.
-/// To find out currently enabled processing and caching of ad type use <see cref="IsAdsProcessing(AdType)"/>
+// Set available ad types to processing of "AdTypeFlags.Everything"
+// This method will be leave <see cref="AdType.Rewarded"/> on set false argument.
+// The state will be saved between sessions.
+PSV.AdsManager.IsAdsProcessing(AdType type, bool enabled)
+
+// Check available selected ad types.
 bool PSV.AdsManager.IsAdsEnabled(AdTypeFlags types)
 
-/// Check currently processing and caching of selected ad type.
-bool PSV.AdsManager.IsAdsProcessing(AdType type)
-
-/// Set available ad types to processing of selected types.
-/// The state will be saved between sessions.
-/// For set available of all types use <see cref="AdTypeFlags.Everything"/>
-PSV.AdsManager.EnableAdTypes(AdTypeFlags types)
-
-/// Set NOT available ad types to processing of selected types.
-/// The state will be saved between sessions.
-/// For set NOT available of all types use <see cref="AdTypeFlags.Everything"/>
-PSV.AdsManager.DisableAdTypes(AdTypeFlags types)
-
-/// Force show ad by selected type and network. 
-/// Ignored delay between displayed ad.
+// Show ad by selected type and network. 
+// AdNetwork name recomended use null for show high eCPM Ad.
 bool PSV.AdsManager.Show(AdType type, string network = null)
 
-/// Check ready
+// Check ready Ad type
 bool PSV.AdsManager.IsAdReady(AdType type)
 
-/// Get last active mediation ad name of selected type.
-/// Can return "string.Empty".
+// Get last active mediation ad name of selected type.
+// Can return "string.Empty".
 string PSV.AdsManager.GetInfoLastActiveAd(AdType type)
-
 ``` 
 
-#### Banner
-```csharp
-///Get small banner lifecycle
-SmallBannerAdLifecycle smallBannerLifecycle
+## Adding App-ads txt file of our partners  
+### "App-ads.txt: How to Make It & Why You Need It"
 
-///Show small banner
-PSV.AdsManager.ShowSmallBanner(AdPosition ad_pos = AdPosition.Undefined)
+Last year, the ad tech industry struck back at one of its most elusive problems — widespread domain spoofing that let unauthorized developers sell premium inventory they didn’t actually have. The solution? Over two million developers adopted ads.txt — a simple-text public record of Authorized Digital Sellers for a particular publisher’s inventory — to make sure they didn’t lose money from DSPs and programmatic buyers who avoid noncompliant publishers. Thanks to buyers’ ability to [crawl ads.txt and verify seller authenticity](https://iabtechlab.com/ads-txt-about/), this has quickly become a standard for protecting brands. Ad fraud reduced by 11% in 2019 due to these efforts and publisher’s ability to implement more fraud prevention techniques.  
 
-/// Check is banner visible now
-bool PSV.AdsManager.GetBannerVisible()
+The time has come for ads.text to evolve in-app. The introduction of apps-ads.txt is an important method for mobile app devs to similarly eliminate fraud and improve transparency.
 
-///Get current banner size
-AdSize PSV.AdsManager.GetAdSize()
+### What is app-ads.txt?
 
-/// Get current banner size in pixels
-Vector2 PSV.AdsManager.GetBannerSizeInPX()
+Like ads.txt, apps-ads.txt is a text file that app devs upload to their publisher website. It lists all ad sources authorized to sell that publisher’s inventory. [The IAB created a system](https://iabtechlab.com/press-releases/app-ads-txt-released-for-public-comment-as-next-step-to-fight-digital-advertising-inventory-fraud/) that allows buyers to distinguish the authorized sellers for specific in-app inventory, weeding out the undesirables.
 
-///Get current banner position
-AdPosition PSV.AdsManager.GetAdPos()
+### How does app-ads.txt work for mobile apps?
 
-///Hide small banner
-PSV.AdsManager.HideSmallBanner()
+A DSP wanting to bid on an app’s inventory crawls the app-ads.txt file on a developer’s website to verify which ad sources are authorized to sell that app’s inventory. The DSP will only accept bid requests from ad sources listed on the file and authorized by the app developer.
 
-///Refresh small banner
-PSV.AdsManager.RefreshSmallBannerForCurrentScene()
+### How does app-ads.txt help mobile app developers capture more ad revenue?
 
-///Refresh banner with new params
-PSV.AdsManager.RefreshSmallBanner(AdPosition ad_pos, AdSize ad_size)
+**Authorized in-app inventory**. An ever-increasing amount of brands are looking to advertise in-app today. Brand buyers now rely on an adherence to app-ads.txt to make sure they don’t buy unauthorized inventory from app developers and negatively impact campaign performance. Developers who don’t implement app-ads.txt can be removed from any brand buyer’s target media list. That’s why joining the app-ads.txt movement is crucial for publishers to maintain their revenue.
 
-``` 
- 
-Position by default - **Undefined**<br/>
-Possible banner positions:
+**Ad fraud prevention**. App-ads.txt blocks unauthorized developers who impersonate legitimate apps and mislead DSPs into spending brand budgets on fake inventory. With fraud instances minimized, authentic developers can retain more of the ad revenue from inventory genuinely targeted to their app.
 
-| |AdPosition| |
-| --- | --- | --- |
-| Top_Left | Top_Centered | Top_Right |
-| Bottom_Right| Bottom_Center| Bottom_Right|
+### How do I create an app-ads.txt?
 
-#### Interstitial
-```csharp
-///Show Interstitial Ads banner.
-PSV.AdsManager.ShowInterstitial()
+You must list your **Developer Website URL** in the GooglePlay and iTunes app stores. There must be a valid developer website URL in all app stores hosting your apps.
 
-///Show Interstitial Ads banner.
-/// Return value indicates whether show the ads succeeded.
-bool PSV.AdsManager.ShowInterstitial(bool ignore_delay = false)
+Make sure that your publisher website URL (not app specific URL)  is added in your app store listings. Advertising platforms will use this site to verify the app-ads.txt file.
 
-/// Full-screen banner cached and ready to show.
-bool PSV.AdsManager.IsInterstitialReady()
+We have made it easier for you to include CAS list of entries so that don’t have to construct it on your own. Please copy and paste the following text block and include in your txt file along with entries you may have from your other monetization partners:  
+**[App-ads.txt](https://cleveradssolutions.com/app-ads.txt)**
 
-///The time delay after the last interstitial was passed.
-bool PSV.AdsManager.IsInterDelayPassed()
-
-///Waiting time after the last show until the next interstitial show
-float PSV.AdsManager.GetInterDelayLeft()
-
-///Is displayed right now full screen banner interstitial.
-bool PSV.AdsManager.IsDisplayedInterstitial()
-
-///Start delay between shown interstitial with the current time
-PSV.AdsManager.ResetLastInterstitialTime()
-
-///Set interval between possible interstitial call
-PSV.AdsManager.SetInterstitialInterval(float seconds)
-
-///Set delay between shown interstitial done
-SetInterDelayDone()
-```
-
-Events:_ 
-```csharp
-⚡️ PSV.AdsManager.OnInterstitialClosed
-⚡️ PSV.AdsManager.OnInterstitialShown
-```
-
-#### Rewarded Video
-```csharp
-/// Rewarded video ad cached and ready to show.
-bool PSV.AdsManager.IsRewardedReady()
-
-/// The time delay after the last rewarded video ad was passed.
-bool PSV.AdsManager.IsRewardedDelayPassed()
-
-/// Waiting time after the last show until the next video show
-float PSV.AdsManager.GetRewardedDelayLeft()
-
-/// Start delay between shown rewarded with the current time
-PSV.AdsManager.ResetLastRewardedTime()
-
-///Set delay between shown rewarded video ad done
-PSV.AdsManager.SetRewardedDelayDone()
-
-/// Show rewarded video ad.
-/// Before calling this method, subscribe to events like "OnRewardedComplete" 
-/// After done or close rewarded, unsubscripted from events.
-bool PSV.AdsManager.ShowRewardedVideoAd(bool ignore_delay = false)
-
-/// Show rewarded video ad. 
-/// One-time use actions without needed to unsubscripted.
-/// Return value indicates whether show the video succeeded.
-bool PSV.AdsManager.TryShowRewardedVideoAd(Action successful, Action fail, bool successOnAdDisabled = false, bool ignore_delay = false)
-
-/// Is displayed right now rewarded ad video.
-PSV.AdsManager.IsDisplayedRewardedVideo()
-
-/// Show Rewarded. If Rewarded Video Ad can't be shown then show Interstitial Ad.
-/// Method is ignored delay between shown Rewarded and Interstitial ad.
-bool PSV.AdsManager.ShowRewardedElseInterAd(Action successful, Action fail, bool successOnAdDisabled = true)
-
-```
-Events:_
-
-```csharp
-⚡️ PSV.AdsManager.OnRewardedClosed
-⚡️ PSV.AdsManager.OnRewardedComplete
-⚡️ PSV.AdsManager.OnRewardedShown
-```
+## Mediation partners:
+* [Admob](https://admob.google.com/home)  
+* [AppLovin](https://www.applovin.com)  
+* [Chartboost](https://www.chartboost.com)  
+* [KIDOZ](https://kidoz.net)  
+* [UnityAds](https://unity.com/solutions/unity-ads)  
+* [Vungle](https://vungle.com)  
+* [AdColony](https://www.adcolony.com)  
+* [StartApp](https://www.startapp.com)  
+* [SuperAwesome](https://www.superawesome.com)  
+* [IronSource](https://www.ironsrc.com)  
+* [InMobi](https://www.inmobi.com)  
+* [Facebook Audience](https://www.facebook.com/business/marketing/audience-network)  
+* [Yandex Ad](https://yandex.ru/dev/mobile-ads)  
 
 ## Support
-Technical support: <br>
-Max<br>
-Skype: m.shevchenko_15 <br>
+Technical support: Max  
+Skype: m.shevchenko_15  
 
-Network support: <br>
-Vitaly<br>
-Skype: zanzavital <br>
-mailto:support@cleveradssolutions.com <br>
+Network support: Vitaly  
+Skype: zanzavital  
+
+mailto:support@cleveradssolutions.com  
