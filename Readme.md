@@ -38,7 +38,7 @@ This will generate template gradle file inside Assets -> Plugins -> Android call
 After that, all the necessary gradle settings will be determined automatically on Build. 
 
 ### Update AndroidManifest
-Add the following permissions to your [Plugins/Android/AndroidManifest.xml](Plugins/Android/AndroidManifest.xml ), file inside the manifest tag but outside the <application> tag:
+Add the following permissions to your [Plugins/Android/AndroidManifest.xml](Assets/Plugins/Android/AndroidManifest.xml ), file inside the manifest tag but outside the <application> tag:
 ```xml
 <manifest>
     <uses-permission android:name="android.permission.INTERNET" />
@@ -62,7 +62,7 @@ Add the following permissions to your [Plugins/Android/AndroidManifest.xml](Plug
     ...
 </manifest>
 ```
-If you do not find the manifest file [Plugins/Android/AndroidManifest.xml](Plugins/Android/AndroidManifest.xml ), you can take it from the example.  
+If you do not find the manifest file [Plugins/Android/AndroidManifest.xml](Assets/Plugins/Android/AndroidManifest.xml ), you can take it from the example.  
 
 Some SDK may require a default permission, so please use the following lines to limit it.
 ```xml
