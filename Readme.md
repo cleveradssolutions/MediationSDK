@@ -1,4 +1,4 @@
-# CleverAdsSolutions-Unity
+# CleverAdsSolutions - Unity SDK Integration
 
 
 ## Before You Start  
@@ -17,8 +17,8 @@ In case you can not migrate the project using this tool, you can use the followi
 *  android.useAndroidX = true  
 *  android.enableJetifier = true  
 
+## Step 1 Add the CAS SDK to Your Project
 
-## SDK Integration
 [Download unitypackage from release page](https://github.com/cleveradssolutions/MediationSDK/releases/latest)   
 Package contains all required modules for mediation.   
 There must be no compillation errors for success automatic installation launcher.  
@@ -32,12 +32,12 @@ Some Ad Networks target specific age ratings for your app’s content. Please se
 *  MA - 18+ years. Mature audiences. Content suitable only for mature audiences; includes topics such as alcohol, gambling, sexual content, and weapons.  
 **You can be punished if you don’t comply with the partner’s content rating restrictions!**
 
-### Enable Gradle
+### Step 2 Enable Gradle
 Go to Build Settings -> Player Settings -> Publishing Settings and check Custom Gradle Template  
 This will generate template gradle file inside Assets -> Plugins -> Android called mainTemplate.gradle  
 After that, all the necessary gradle settings will be determined automatically on Build. 
 
-### Update AndroidManifest
+### Step 3 Update AndroidManifest
 Add the following permissions to your [Plugins/Android/AndroidManifest.xml](Assets/Plugins/Android/AndroidManifest.xml ), file inside the manifest tag but outside the <application> tag:
 ```xml
 <manifest>
@@ -71,21 +71,10 @@ Some SDK may require a default permission, so please use the following lines to 
 </manifest>
 ```
 
-#### Google Play Services in Your Android Manifest
-Add the following  inside the <application> tag in your AndroidManifest:
-```xml
-<manifest>
-    <application>
-      ...
-        <meta-data 
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-    </application>
-</manifest>
-```
+### Step 4 Add Cross Promotion SDK
+Cross promotion is an app marketing strategy in which app developers promote one of their titles on another one of their titles. Cross promoting is especially effective for developers with large portfolios of games as a means to move users across titles and use the opportunity to scale each of their apps. This is most commonly used by hyper-casual publishers who have relatively low retention, and use cross promotion to keep users within their app portfolio.
 
-## For ProGuard Users Only
-If you are using ProGuard, you must add the following lines [Assets/Plugins/Android/proguard-user.txt](Assets/Plugins/Android/proguard-user.txt) to your ProGuard file.  
+Start your cross promotion campaign with CAS [here](https://cleveradssolutions.com).
 
 ### Additional Settings for iOS
 In iOS9, Apple has added in controls around ‘ATS’. In order to ensure uninterrupted support for CAS Ad delivery across all Mediation Networks, it’s important to make the following changes in your info.plist:  
